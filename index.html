@@ -4,37 +4,44 @@
 <meta charset="UTF-8">
 <title>MGS Countdown</title>
 <style>
-  /* Container styling like your MGS alert */
+  body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+  }
+
   #mgs-alert {
-    background-color: black;
-    color: red;
-    font-family: 'Orbitron', monospace;
+    background: #8B0000; /* deep red  */
+    border: 3px solid red;
+    padding: 20px 40px;
     text-align: center;
-    padding: 20px;
-    border: 4px solid red;
-    width: 400px;
-    margin: 100px auto;
-    text-shadow: 0 0 10px red, 0 0 20px red;
+    color: #FF0000;
+    font-family: 'Orbitron', monospace;
+    text-shadow: 0 0 10px #FF0000, 0 0 20px #FF6347;
+    box-shadow: 0 0 30px red inset;
+    width: fit-content;
   }
 
   .alert-title {
     font-size: 2em;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin: 0;
   }
 
   .alert-kanji {
-    font-size: 3em;
-    margin-bottom: 10px;
+    font-size: 1.8em;
+    margin: 0;
   }
 
   #mgs-timer {
     font-size: 3em;
+    font-weight: bold;
+    margin-top: 10px;
   }
 
-  body {
-    background: #000;
-  }
 </style>
 </head>
 <body>
@@ -45,13 +52,11 @@
 </div>
 
 <script>
-  // Target date: October 11, 2025 08:00:00
   const targetDate = new Date(2025, 9, 11, 8, 0, 0);
 
   function updateTimer() {
     const now = new Date();
     let diff = Math.floor((targetDate - now) / 1000);
-
     if (diff < 0) diff = 0;
 
     const days = Math.floor(diff / 86400);
@@ -75,4 +80,3 @@
 </script>
 </body>
 </html>
-

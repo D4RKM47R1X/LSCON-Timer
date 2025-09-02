@@ -1,92 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>LSCON snake Countdown</title>
-<style>
-body {
-background: #000;
-display: flex;
-justify-content: center;
-align-items: center;
-height: 100vh;
-margin: 0;
-}
 #mgs-alert {
-background: #8B0000; /* deep red */
-border: 3px solid red;
-padding: 20px 40px;
-text-align: center;
-color: #f8baba;
-font-family: 'Orbitron', monospace;
-text-shadow: 0 0 10px #FF0000, 0 0 20px #FF6347;
-box-shadow: 0 0 30px red inset;
-width: fit-content;
+  background: #8B0000; /* deep red */
+  border: 3px solid red;
+  padding: 20px;
+  text-align: center;
+  color: #f8baba;
+  font-family: 'Orbitron', monospace;
+  text-shadow: 0 0 10px #FF0000, 0 0 20px #FF6347;
+  box-shadow: 0 0 30px red inset;
+  max-width: 90vw;   /* limit width to screen */
+  word-wrap: break-word;
+  box-sizing: border-box;
 }
+
 .alert-title {
-font-size: 2em;
-font-weight: bold;
-margin: 0;
+  font-size: clamp(1.5em, 5vw, 2em); /* scales with screen */
+  font-weight: bold;
+  margin: 0;
 }
+
 .alert-kanji {
-font-size: 1.8em;
-margin: 0;
+  font-size: clamp(1.2em, 4.5vw, 1.8em);
+  margin: 0;
 }
+
 #mgs-timer {
-font-size: 3em;
-font-weight: bold;
-margin-top: 10px;
-letter-spacing: 4px; /* Adjust spacing between numbers */
+  font-size: clamp(2em, 8vw, 3em); /* scales timer text */
+  font-weight: bold;
+  margin-top: 10px;
+  letter-spacing: 0.2em;
 }
+
 #timer-labels {
-display: flex;
-justify-content: space-around;
-font-size: 0.5em;
-color: #f8baba;
-text-shadow: 0 0 5px #FF0000;
-margin-top: 5px;
-padding: 0 15px; /* Added padding to align with timer */
+  display: flex;
+  justify-content: space-around;
+  font-size: clamp(0.5em, 2.5vw, 0.8em);
+  color: #f8baba;
+  text-shadow: 0 0 5px #FF0000;
+  margin-top: 5px;
+  padding: 0 15px;
 }
-</style>
-</head>
-<body>
-<div id="mgs-alert">
-<div class="alert-title">ALERT</div>
-<div class="alert-kanji">危険</div>
-<div id="mgs-timer">00.00.00.00</div>
-<div id="timer-labels">
-<span>DAYS</span>
-<span>HRS</span>
-<span>MINS</span>
-<span>SECS</span>
-</div>
-</div>
-<script>
-const targetDate = new Date(2025, 9, 11, 8, 0, 0);
-
-function updateTimer() {
-const now = new Date();
-let diff = Math.floor((targetDate - now) / 1000);
-if (diff < 0) diff = 0;
-
-const days = Math.floor(diff / 86400);
-diff %= 86400;
-const hours = Math.floor(diff / 3600);
-diff %= 3600;
-const minutes = Math.floor(diff / 60);
-const seconds = diff % 60;
-
-const display =
-String(days).padStart(2,'0') + "." +
-String(hours).padStart(2,'0') + "." +
-String(minutes).padStart(2,'0') + "." +
-String(seconds).padStart(2,'0');
-
-document.getElementById("mgs-timer").textContent = display;
-}
-
-updateTimer();
-setInterval(updateTimer, 1000);
-</script>
-</body>
-</html>
